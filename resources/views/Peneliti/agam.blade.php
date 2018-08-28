@@ -1,7 +1,7 @@
 <?php session()->put('flag', 3); ?>
 @extends('layouts.PenelitiPartial.master')
 
-@section('title')
+@section('content')
 <?php
   $tahun = Carbon\Carbon::now()->format('Y');
   $nama_lokasi = App\Cabang::where('id_cabang', $id)->value('nama_cabang');

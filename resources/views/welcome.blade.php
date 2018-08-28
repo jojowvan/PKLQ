@@ -9,12 +9,13 @@
 
       <!-- Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+      <link href= "{{ asset('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
       <!-- Styles -->
       <style>
           html, body {
               background-color: #fff;
-              color: #636b6f;
+              color: #fff;
               font-family: 'Raleway', sans-serif;
               font-weight: 100;
               height: 100vh;
@@ -158,7 +159,7 @@
           @auth
             <a href="{{ url('/home') }}">Home</a>
           @else
-            <a href="{{ route('login') }}">Masuk</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Masuk</a>
             <!-- <a href="{{ route('register') }}">Register</a> -->
           @endauth
         </div>
