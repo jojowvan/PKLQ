@@ -20,7 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('admin.dashboard');
+Route::get('/home/{id_cabang}', 'UserController@view_cabang')->name('kapuslihat.agam');
 
+// Route::get('/home/DaftarAlat', 'UserController@daftarAlat')->name('daftarAlat');
+
+Route::get('/profil', 'UserController@profil')->name('profil1');
+Route::post('/profil', 'UserController@gantiPassword')->name('ganti.password');
+
+Route::get('/lihatFile1', 'UserController@lihatFile1')->name('lihatFile1');
+
+Route::get('/daftarAlat1', 'UserController@daftarAlat1')->name('daftarAlat1');
+Route::get('/daftarAlat2', 'UserController@daftarAlat2')->name('daftarAlat2');
 //Route::get('/ea', function(){
   //run cmd
   //$process = new Process('python as.py');
@@ -55,9 +65,11 @@ Route::prefix('admin')->group(function(){
   Route::post('/tambahAlat', 'AdminController@createAlat')->name('tambahAlat.create');
 
   Route::get('/Laporan', 'AdminController@Laporan')->name('laporan');
+
+  Route::get('/lihatLaporan/{id}', 'AdminController@lihatLaporan')->name('lihatLaporan');
 });
 
-Route::get('/pdf', 'PDFController@getPDF');
+
 
 // Route::get('/wow', function(){
 //   $process = new Process('python ../routes/cabang.py');

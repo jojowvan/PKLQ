@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Alat;
+use App\Cabang;
+use App\File;
+use App\sidebar;
 use Hash;
 use Auth;
 use Alert;
@@ -14,6 +18,23 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function view_cabang($id)
+    {
+      $side = sidebar::orderBy('id_cabang')->get();
+      $file = File::orderBy('id_file')->get();
+      $alat = Alat::orderBy('id_alat')->get();
+      session()->put('file', $file);
+      session()->put('id', $id);
+      session()->put('alat', $alat);
+      return view('kapus/agam', compact('side'));
+    }
+
+    public function profil()
+    {
+      $side   = sidebar::orderBy('id_cabang')->get();
+      return view('profil1', compact('side'));
     }
 
     public function gantiPassword(Request $request)
@@ -38,12 +59,34 @@ class UserController extends Controller
 
         //Change Password
         $user = Auth::user();
-        $user->name = $request->name;
+        // $user->name = $request->name;
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
         return redirect()->back()->with("success","Password changed successfully !");
         session()->flash('passwordChanged', 'Your Password Has Been Changed.');
         // return redirect()->back();
+    }
+
+    public function daftarAlat1()
+    {
+      $alat = Alat::orderBy('id_alat')->get();
+      $cabang = Cabang::orderBy('id_cabang')->get();
+      return view('DaftarAlat1', compact('alat'), compact('cabang'));
+    }
+
+    public function daftarAlat2()
+    {
+      $alat = Alat::orderBy('id_alat')->get();
+      $cabang = Cabang::orderBy('id_cabang')->get();
+      return view('DaftarAlat2', compact('alat'), compact('cabang'));
+    }
+
+    public function lihatFile1()
+    {
+      $file = File::orderBy('id_file')->get();
+      $cabang = Cabang::orderBy('id_cabang')->get();
+      $alat = Alat::orderBy('id_alat')->get();
+      return view('lihatFile1', compact('file'), compact('cabang'), compact('alat'));
     }
 }

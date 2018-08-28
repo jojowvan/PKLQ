@@ -42,15 +42,6 @@
         {{ csrf_field() }}
 
         <div class="form-group">
-          <label class="control-label col-md-2">Foto Anggota
-          </label>
-          <div class="col-md-4">
-            {{--  <input type="file" class="form-control" name="photo" placeholder="Foto Anggota" class="form-control col-md-9 col-xs-12">  --}}
-            <input type="file" class="form-control" name="image" >
-          </div>
-        </div>
-
-        <div class="form-group">
           <label class="control-label col-md-2">Nama Anggota
             <span class="required">*</span>
           </label>
@@ -82,7 +73,7 @@
             <span class="required">*</span>
           </label>
           <div class="col-md-9">
-            <input type="text" class="form-control" name="identitas" placeholder="Nomor Identitas Anggota" required="required">
+            <input type="text" class="form-control" name="identitas" pattern="[0-9]+" placeholder="Nomor Identitas Anggota" required="required">
           </div>
         </div>
 
@@ -101,7 +92,7 @@
 
           <div class="form-group">
               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-success">Tambah</button>
               </div>
           </div>
 

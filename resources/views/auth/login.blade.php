@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="limiter">
-  <div class="container-login100" style="background-image: url('page/login/images/bg-01.jpg');">
+  <div class="container-login100" style="background-image: url('page/login/images/login.jpg');">
     <div class="wrap-login100 p-t-30 p-b-50">
       <span class="login100-form-title p-b-41">
-        Account Login
+        Masuk Akun
       </span>
 
       <form method="POST" action="{{ route('login') }}" class="login100-form validate-form p-b-33 p-t-5">
@@ -22,7 +22,7 @@
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Enter password">
-          <input id="password" type="password" class="input100{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
+          <input id="password" type="password" class="input100{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Kata sandi" required>
 
           @if ($errors->has('password'))
               <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
             Login
           </button> -->
           <button type="submit" class="btn btn-primary">
-              {{ __('Login') }}
+              {{ __('Masuk') }}
           </button>
         </div>
 

@@ -8,7 +8,7 @@
     <?php $value = Session::get('flag'); ?>
     <?php
     if($value==0) {
-      $value = 'Dashboard';
+      $value = 'Halaman Utama';
     }
     else if($value==1) {
       $value = 'Daftar Anggota';
@@ -20,10 +20,25 @@
       $value = 'Ganti Kata Sandi';
     }
     else if($value==4) {
-      $value = 'Tambah Cabang';
+      $value = 'Tambah Lokasi';
     }
     else if($value==5) {
-      $value = 'Monitor Cabang';
+      $value = 'Monitor Lokasi';
+    }
+    else if($value==6) {
+      $value = 'Daftar Lokasi';
+    }
+    else if($value==7) {
+      $value = 'Daftar Alat';
+    }
+    else if($value==8) {
+      $value = 'Tambah Alat';
+    }
+    // else if($value==9) {
+    //   $value = 'Daftar Fail';
+    // }
+    else if($value==10) {
+      $value = 'Daftar Laporan';
     }
     ?>
     <title> <?php echo $value; ?>  </title>

@@ -34,7 +34,7 @@
               <th>Email</th>
               <th>NIK</th>
               <th>Jabatan Anggota</th>
-              <th style="width: 1%">Actions</th>
+              <th style="width: 1%">Aksi</th>
             </tr>
           </thead>
           <tbody>

@@ -9,7 +9,7 @@
 @section('content')
   <div class="x_panel">
     <div class="x_title">
-      <h2>Tambah Cabang</h2>
+      <h2>Tambah Lokasi Pengamatan</h2>
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
@@ -42,11 +42,11 @@
         {{ csrf_field() }}
 
         <div class="form-group">
-          <label class="control-label col-md-2">Nama Cabang
+          <label class="control-label col-md-2">Nama Lokasi Pengamatan
             <span class="required">*</span>
           </label>
           <div class="col-md-9">
-            <input type="text" class="form-control" required="required" name="nama_cabang" placeholder="Nama Cabang" class="form-control col-md-9 col-xs-12">
+            <input type="text" class="form-control" required="required" name="nama_cabang" placeholder="Nama Lokasi Pengamatan" class="form-control col-md-9 col-xs-12">
           </div>
         </div>
 
@@ -62,7 +62,7 @@
 
           <div class="form-group">
               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-success">Tambah</button>
               </div>
           </div>
 

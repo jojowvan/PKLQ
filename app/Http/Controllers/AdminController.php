@@ -15,6 +15,9 @@ use App\Alat;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\InputStream;
+use Carbon\Carbon;
+use PDF;
+use Mail;
 
 session()->regenerate();
 error_reporting(0);
@@ -55,7 +58,7 @@ class AdminController extends UserController
       session()->put('password', $pswd);
       $info->notify(new SendPassword());
 
-      session()->flash('success', 'Anggota Berhasil Ditambahkan');
+      session()->flash('success', 'Anggota Berhasil Ditambahkan!');
       return redirect()->back();
     }
 
@@ -115,7 +118,7 @@ class AdminController extends UserController
     {
         $user   = User::find($id);
         $user->delete();
-        session()->flash('deleteNotif', 'Delete Succesful!');
+        session()->flash('deleteNotif', 'Anggota Berhasil Dihapus!');
         return redirect()->route('lihatStaff.readAll');
     }
 
@@ -179,12 +182,155 @@ class AdminController extends UserController
               'identitas_alat'     => $request->input('identitas_alat'),
           ]);
 
-      session()->flash('success', 'Cabang Berhasil Ditambahkan');
+      session()->flash('success', 'Alat Berhasil Ditambahkan');
       return redirect()->back();
     }
 
     public function Laporan()
     {
       return view('laporan');
+    }
+
+    public function lihatLaporan($lihat)
+    {
+      $penerima = Userinfo::orderBy('id')->get();
+      $hari = Carbon::now()->day;
+      $bulan = Carbon::now()->month;
+      $tahun = Carbon::now()->year;
+
+      if($bulan == 1) {
+        $bulan = 'Januari';
+        $laporan = 'Desember';
+      }
+      else if($bulan == 2) {
+        $bulan = 'Februari';
+        $laporan = 'Januari';
+      }
+      else if($bulan == 3) {
+        $bulan = 'Maret';
+        $laporan = 'Februari';
+      }
+      else if($bulan == 4) {
+        $bulan = 'April';
+        $laporan = 'Maret';
+      }
+      else if($bulan == 5) {
+        $bulan = 'Mei';
+        $laporan = 'April';
+      }
+      else if($bulan == 6) {
+        $bulan = 'Juni';
+        $laporan = 'Mei';
+      }
+      else if($bulan == 7) {
+        $bulan = 'Juli';
+        $laporan = 'Juni';
+      }
+      else if($bulan == 8) {
+        $bulan = 'Agustus';
+        $laporan = 'Juli';
+      }
+      else if($bulan == 9) {
+        $bulan = 'September';
+        $laporan = 'Agustus';
+      }
+      else if($bulan == 10) {
+        $bulan = 'Oktober';
+        $laporan = 'September';
+      }
+      else if($bulan == 11) {
+        $bulan = 'November';
+        $laporan = 'Oktober';
+      }
+      else if($bulan == 12) {
+        $bulan = 'Desember';
+        $laporan = 'November';
+      }
+
+      $cabang = Cabang::orderBy('nama_cabang')->get();
+      $alat = Alat::orderBy('id_alat')->get();
+      $file = File::orderBy('id_file')->get();
+
+      session()->put('laporan', $laporan);
+      session()->put('cabang', $cabang);
+      session()->put('alat', $alat);
+      session()->put('file', $file);
+      session()->put('tahun', $tahun);
+      session()->put('bulan', $laporan);
+
+      $tanggal = $hari . ' ' . $bulan . ' ' . $tahun;
+
+      if((integer)$lihat==0) {
+        foreach($penerima as $penerimas) {
+          if($penerimas->isAdmin == 2) {
+            Mail::send('mail', ['name',$penerimas->name], function($message) use($penerimas){
+              $bulan = Carbon::now()->month;
+              $tahun = Carbon::now()->year;
+
+              if($bulan == 1) {
+                $bulan = 'Januari';
+                $laporan = 'Desember';
+              }
+              else if($bulan == 2) {
+                $bulan = 'Februari';
+                $laporan = 'Januari';
+              }
+              else if($bulan == 3) {
+                $bulan = 'Maret';
+                $laporan = 'Februari';
+              }
+              else if($bulan == 4) {
+                $bulan = 'April';
+                $laporan = 'Maret';
+              }
+              else if($bulan == 5) {
+                $bulan = 'Mei';
+                $laporan = 'April';
+              }
+              else if($bulan == 6) {
+                $bulan = 'Juni';
+                $laporan = 'Mei';
+              }
+              else if($bulan == 7) {
+                $bulan = 'Juli';
+                $laporan = 'Juni';
+              }
+              else if($bulan == 8) {
+                $bulan = 'Agustus';
+                $laporan = 'Juli';
+              }
+              else if($bulan == 9) {
+                $bulan = 'September';
+                $laporan = 'Agustus';
+              }
+              else if($bulan == 10) {
+                $bulan = 'Oktober';
+                $laporan = 'September';
+              }
+              else if($bulan == 11) {
+                $bulan = 'November';
+                $laporan = 'Oktober';
+              }
+              else if($bulan == 12) {
+                $bulan = 'Desember';
+                $laporan = 'November';
+              }
+
+                $message->to($penerimas->email,$penerimas->name)->subject('Laporan Monitoring Bulan ' . $laporan);
+                $message->from('siapLapan@lapan.com','Sistem siapLapan');
+                $pdf = PDF::loadView('cuba', compact('penerimas'), compact('tanggal'));
+                $message->attachData($pdf->output(), 'Laporan Monitoring Data Bulan '. $laporan . ' ' . $tahun .'.pdf');
+            });
+          }
+        }
+        session()->flash('success', 'Fail Sukses Dikirim!');
+        return redirect()->back();
+      }
+
+      else {
+        $pdf = PDF::loadView('cuba', compact('penerimas'), compact('tanggal'));
+        return $pdf->stream('Laporan Monitoring Data Bulan '. $laporan . ' ' . $tahun .'.pdf');
+      }
+    // echo 'Email was sent!';
     }
 }

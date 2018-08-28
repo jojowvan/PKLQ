@@ -1,4 +1,4 @@
-<?php session()->put('flag', 1); ?>
+<?php session()->put('flag', 6); ?>
 @extends('templates.admins.master')
 
 @section('content')
@@ -21,7 +21,7 @@
 
     <div class="x_panel">
       <div class="x_title">
-        <h2>Daftar Cabang</h2>
+        <h2>Daftar Lokasi Pengamatan</h2>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
@@ -30,9 +30,9 @@
           <thead>
             <tr>
               <th style="width: 1%" >Nomor</th>
-              <th style="width: 1%"> Nama Cabang</th>
-              <th>IP Server</th>
-              <th style="width: 1%">Actions</th>
+              <th style="width: 1%"> Lokasi Pengamatan</th>
+              <th>Internet Protocol Server</th>
+              <th style="width: 1%">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -53,25 +53,25 @@
                   {{ method_field('DELETE') }}
                   <button type="submit"  class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Delete</button>
 
-                    <script>
-                      document.getElementById('deleteButton').onclick = function(event){
-                        event.preventDefault();
-                      	swal({
-                      		title: "Apakah anda yakin ingin menghapus?",
-                      		text: "Anda tidak dapat mengembalikan kembali.",
-                      		type: "warning",
-                      		showCancelButton: true,
-                      		confirmButtonColor: '#DD6B55',
-                      		confirmButtonText: 'Ya',
-                      		closeOnConfirm: false,
-                      		//closeOnCancel: false
-                      	},
-                      	function(){
-                          // swal("Terhapus", "Akun telah terhapus!", "Sukses");
-                          document.getElementById("deleteButton").submit();
-                      	});
-                      };
-                    </script>
+                  <script>
+                    document.getElementById('deleteButton').onclick = function(event){
+                      event.preventDefault();
+                      swal({
+                        title: "Apakah anda yakin ingin menghapus?",
+                        text: "Anda tidak dapat mengembalikan kembali.",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: '#DD6B55',
+                        confirmButtonText: 'Ya',
+                        closeOnConfirm: false,
+                        //closeOnCancel: false
+                      },
+                      function(){
+                        // swal("Terhapus", "Akun telah terhapus!", "Sukses");
+                        document.getElementById("deleteButton").submit();
+                      });
+                    };
+                  </script>
 
                   </form>
 

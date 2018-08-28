@@ -150,6 +150,7 @@
       </script>
   </head>
   <body>
+    <div class="container-login100" style="background-image: url('page/login/images/welcome1.jpg');">
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/ico"> -->
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
@@ -157,7 +158,7 @@
             @auth
               <a href="{{ url('/home') }}">Home</a>
             @else
-              <a href="{{ route('login') }}">Login</a>
+              <a href="{{ route('login') }}">Masuk</a>
               <!-- <a href="{{ route('register') }}">Register</a> -->
             @endauth
           </div>

@@ -7,21 +7,21 @@
       <div class="tile-stats">
         <div class="icon"><i class="fa fa-group"></i></div>
         <div class="count">{{ DB::table('users')->count() }}</div>
-        <h3>Anggota</h3>
+        <h3>Jumlah Anggota</h3>
       </div>
     </div>
     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
         <div class="icon"><i class="fa fa-globe"></i></div>
         <div class="count">{{ DB::table('cabang')->count() }}</div>
-        <h3>Cabang</h3>
+        <h3>Jumlah Lokasi</h3>
       </div>
     </div>
     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
         <div class="icon"><i class="fa fa-wrench"></i></div>
         <div class="count">{{ DB::table('alat')->count() }}</div>
-        <h3>Alat</h3>
+        <h3>Jumlah Alat</h3>
       </div>
     </div>
   </div>

@@ -4,11 +4,14 @@
 @section('content')
   <div class="x_panel">
     <div class="col-md-6">
-      <h3>Per Bulan</h3>
+      <?php
+      $id = Session::get('id');
+      $nama_lokasi = App\Cabang::where('id_cabang', $id)->value('nama_cabang');
+      ?>
+      <h3>Monitoring Data Lokasi Pengamatan <?php echo $nama_lokasi; ?></h3>
     </div>
     <?php
       $tahun = Carbon\Carbon::now()->format('Y');
-      // dd((integer)$tahun);
     ?>
     <div class="x_content">
 
@@ -21,9 +24,7 @@
         </br>
         <?php
           $file = Session::get('file');
-          $id = Session::get('id');
           $alat = Session::get('alat');
-          // dd($alat);
         ?>
         <div id="myTabContent2" class="tab-content">
           <div role="tabpanel" class="tab-pane fade active in" id="tab_tahun1" aria-labelledby="home-tab">
@@ -85,6 +86,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Januari <?php echo (integer)$tahun; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -161,6 +165,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Februari <?php echo (integer)$tahun; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -235,6 +242,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Maret <?php echo (integer)$tahun; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -311,6 +321,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> April <?php echo (integer)$tahun; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -385,6 +398,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Mei <?php echo (integer)$tahun; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -461,6 +477,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Juni <?php echo (integer)$tahun; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -535,6 +554,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Juli <?php echo (integer)$tahun; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -611,6 +633,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Agustus <?php echo (integer)$tahun; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -685,6 +710,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> September <?php echo (integer)$tahun; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -761,6 +789,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Oktober <?php echo (integer)$tahun; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -836,6 +867,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> November <?php echo (integer)$tahun; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -910,6 +944,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Desember <?php echo (integer)$tahun; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1006,6 +1043,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Januari <?php echo (integer)$tahun-1; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -1080,6 +1120,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Februari <?php echo (integer)$tahun-1; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1156,6 +1199,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Maret <?php echo (integer)$tahun-1; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -1230,6 +1276,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> April <?php echo (integer)$tahun-1; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1306,6 +1355,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Mei <?php echo (integer)$tahun-1; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -1380,6 +1432,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Juni <?php echo (integer)$tahun-1; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1456,6 +1511,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Juli <?php echo (integer)$tahun-1; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -1530,6 +1588,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Agustus <?php echo (integer)$tahun-1; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1606,6 +1667,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> September <?php echo (integer)$tahun-1; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -1680,6 +1744,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Oktober <?php echo (integer)$tahun-1; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1756,6 +1823,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> November <?php echo (integer)$tahun-1; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -1830,6 +1900,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Desember <?php echo (integer)$tahun-1; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -1926,6 +1999,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Januari <?php echo (integer)$tahun-2; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -2000,6 +2076,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Februari <?php echo (integer)$tahun-2; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -2076,6 +2155,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Maret <?php echo (integer)$tahun-2; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -2150,6 +2232,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> April <?php echo (integer)$tahun-2; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -2226,6 +2311,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Mei <?php echo (integer)$tahun-2; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -2300,6 +2388,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Juni <?php echo (integer)$tahun-2; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -2376,6 +2467,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Juli <?php echo (integer)$tahun-2; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -2450,6 +2544,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Agustus <?php echo (integer)$tahun-2; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -2526,6 +2623,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> September <?php echo (integer)$tahun-2; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -2600,6 +2700,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Oktober <?php echo (integer)$tahun-2; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
@@ -2676,6 +2779,9 @@
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
                                 },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> November <?php echo (integer)$tahun-2; ?>',
+                                },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']
                                 },
@@ -2750,6 +2856,9 @@
                                 },
                                 title: {
                                 text: '<?php echo $alats->nama_alat; ?>'
+                                },
+                                subtitle: {
+                                text: '<?php echo $nama_lokasi?> Desember <?php echo (integer)$tahun-2; ?>',
                                 },
                                 xAxis: {
                                 categories: ['Tanggal 1-7', 'Tanggal 8-14', 'Tanggal 15-21', 'Tanggal 22-31']

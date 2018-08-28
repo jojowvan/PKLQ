@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $side   = sidebar::orderBy('id_cabang')->get();
+        $side   = sidebar::orderBy('nama_cabang')->get();
         if(auth()->user()->isAdmin==1) {
           $id     = Auth::user()->id;
           $admins = User::find($id);

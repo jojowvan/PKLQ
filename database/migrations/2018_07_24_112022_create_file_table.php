@@ -18,7 +18,8 @@ class CreateFileTable extends Migration
             $table->integer('id_cabang');
             $table->integer('id_alat');
             $table->string('nama_file')->unique();
-            $table->timestamps();
+            $table->datetime('current_time');
+            $table->datetime('updated_at');
         });
     }
 

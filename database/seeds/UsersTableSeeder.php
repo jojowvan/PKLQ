@@ -14,12 +14,30 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
       DB::table('users')->insert([
+      [
           'name'      => 'Admin',
-          'email'     => 'admin@admin.com',
+          'email'     => 'admin@lapan.com',
           'password'  => Hash::make('admins'),
-          'identitas' => '14045',
+          'identitas' => '1000',
           'isAdmin'   => 1,
           'remember_token' => str_random(10),
-      ]);
+      ],
+      [
+          'name'      => 'Peneliti',
+          'email'     => 'peneliti@lapan.com',
+          'password'  => Hash::make('penelitis'),
+          'identitas' => '1001',
+          'isAdmin'   => 0,
+          'remember_token' => str_random(10),
+      ],
+      [
+          'name'      => 'Kepala Bidang',
+          'email'     => 'kabid@lapan.com',
+          'password'  => Hash::make('kapuss'),
+          'identitas' => '1002',
+          'isAdmin'   => 2,
+          'remember_token' => str_random(10),
+      ],
+    ]);
     }
 }

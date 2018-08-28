@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
   <div class="pull-right">
-    Sistem Informasi LAPAN Bandung
+    Sistem Monitoring Data Antariksa
   </div>
   <div class="clearfix"></div>
 </footer>

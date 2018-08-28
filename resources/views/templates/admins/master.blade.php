@@ -9,7 +9,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ route('admin.dashboard') }}" class="site_title"><img src="{{ asset('assets/img/8.png') }}" height="50px" widht="50px"><span> LAPAN </span></a>
+              <a href="{{ route('admin.dashboard') }}" class="site_title"><img src="{{ asset('assets/img/8.png') }}" height="50px" widht="50px"><span> SIMODA </span></a>
             </div>
             <div class="clearfix"></div>
             <!-- menu profile quick info -->

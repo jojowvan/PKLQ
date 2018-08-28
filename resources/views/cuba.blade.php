@@ -1,8 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Surat Laporan siapLapan</title>
+        <title><?php
+        // use Session;
+        $tahun = Session::get('tahun');
+        $bulan = Session::get('bulan');
+        echo 'Laporan Monitoring Data Bulan '. $bulan . ' ' . $tahun .'.pdf'; ?></title>
 		<style type="text/css">
 
     tab0  { position:absolute;left:40px;  }
@@ -31,7 +36,7 @@
 
 			/* Reset Styles */
 			body{margin:0; padding:0;}
-			img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+			img{border:0; height:100%; line-height:100%; outline:none; text-decoration:none;}
 			table td{border-collapse:collapse;}
 			#backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
 
@@ -46,7 +51,7 @@
 			* @theme page
 			*/
 			body, #backgroundTable{
-				/*@editable*/ background-color:#FAFAFA;
+				/*@editable*/ background-color:#FFFFFF;
 			}
 
 			/**
@@ -147,7 +152,7 @@
 			* @theme page
 			*/
 			#templatePreheader{
-				/*@editable*/ background-color:#FAFAFA;
+				/*@editable*/ background-color:#FFFFFF;
 			}
 
 			/**
@@ -241,7 +246,7 @@
 			* @tip Set the background color for your email's body area.
 			*/
 			#templateContainer, .bodyContent{
-				/*@editable*/ background-color:#FDFDFD;
+				/*@editable*/ background-color:#FFFFFF;
 			}
 
 			/**
@@ -254,7 +259,7 @@
 				/*@editable*/ color:#505050;
 				/*@editable*/ font-family:Arial;
 				/*@editable*/ font-size:14px;
-				/*@editable*/ line-height:150%;
+				/*@editable*/ line-height:100%;
 				/*@editable*/ text-align:justify;
 			}
 
@@ -271,7 +276,7 @@
 
 			.bodyContent img{
 				display:inline;
-				height:auto;
+				height:100%;
 			}
 
 			/* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: SIDEBAR /\/\/\/\/\/\/\/\/\/\ */
@@ -282,7 +287,7 @@
 			* @tip Set the background color and border for your email's sidebar area.
 			*/
 			#templateSidebar{
-				/*@editable*/ background-color:#FDFDFD;
+				/*@editable*/ background-color:#FFFFFF;
 			}
 
 			/**
@@ -303,7 +308,7 @@
 				/*@editable*/ color:#505050;
 				/*@editable*/ font-family:Arial;
 				/*@editable*/ font-size:10px;
-				/*@editable*/ line-height:150%;
+				/*@editable*/ line-height:100%;
 				/*@editable*/ text-align:left;
 			}
 
@@ -320,7 +325,7 @@
 
 			.sidebarContent img{
 				display:inline;
-				height:auto;
+				height:100%;
 			}
 
 			/* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: FOOTER /\/\/\/\/\/\/\/\/\/\ */
@@ -332,7 +337,7 @@
 			* @theme footer
 			*/
 			#templateFooter{
-				/*@editable*/ background-color:#FAFAFA;
+				/*@editable*/ background-color:#FFFFFF;
 			}
 
 			/**
@@ -345,7 +350,7 @@
 				/*@editable*/ color:#707070;
 				/*@editable*/ font-family:Arial;
 				/*@editable*/ font-size:11px;
-				/*@editable*/ line-height:125%;
+				/*@editable*/ line-height:100%;
 				/*@editable*/ text-align:left;
 			}
 
@@ -391,7 +396,7 @@
 			* @theme footer
 			*/
 			#utility{
-				/*@editable*/ background-color:#FAFAFA;
+				/*@editable*/ background-color:#FFFFFF;
 				/*@editable*/ border-top:0;
 			}
 
@@ -407,6 +412,14 @@
 			#monkeyRewards img{
 				max-width:170px !important;
 			}
+
+      tr:nth-child(even){background-color: #FFFFFF}
+
+      th {
+          background-color: #539dcd;
+          color: white;
+      }
+
 		</style>
 	</head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
@@ -432,7 +445,7 @@
                                      <table border="0" cellpadding="0" cellspacing="0" width="550" id="templateHeader">
                                         <tr>
                                         	<td class="headerContent">
-                                            	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/LAPAN_logo_2015.svg/139px-LAPAN_logo_2015.svg.png" style="max-width:180px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowtext />
+                                            	<img src="../public/lapan.png" style="max-width:180px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowtext />
                                             </td>
                                             <td class="headerContent" width="100%" style="padding-left:10px; padding-right:20px; vertical-align:bottom;">
                                             	<div mc:edit="Header_content">
@@ -446,11 +459,7 @@
                                                     <br style ="vertical-align:top;"> Telepon (022) 6012602, Faksimile (022) 6014998
                                                     <br style ="vertical-align:top;"> Laman: www.lapan.go.id
                                                     </h4>
-                                                    <!-- <h4> Telepon (022) 6012602, Faksimile (022) 6014998 </h4> -->
                                               </div>
-                                              <!-- <div mc:edit="Header_content"> -->
-                                                  <!-- <h4> Telepon (022) 6012602, Faksimile (022) 6014998 </h4> -->
-                                              <!-- </div> -->
                                             </td>
                                         </tr>
                                       </table>
@@ -471,15 +480,21 @@
                                                     <tr>
                                                         <td valign="top" style="padding-left:0;">
                                                             <!-- <div mc:edit="std_content00"> -->
-                                                            	<p style="text-align:right"> <tab12>Hal</tab12><tab3>: Laporan Monitoring Data</tab3> 04 Juni 2018 </p>
+                                                            	<p style="text-align:right"> <tab12>Hal</tab12><tab3>: Laporan Monitoring Data</tab3> <?php echo $tanggal; ?> </p>
+
                                                               <br>
                                                             <!-- </div> -->
                                                             <br><br>
                                                             <?php
-                                                            $penerima = Session::get('penerima');
-                                                            // dd($penerima[0]->name);
+                                                            use Session;
+                                                            // use App\File;
+                                                            $laporan = Session::get('laporan');
+                                                            $cabang = Session::get('cabang');
+                                                            $file = Session::get('file');
+                                                            $alat = Session::get('alat');
+                                                            // dd($cabang);
                                                             ?>
-                                                                <strong>Yth. ECHO NAMA DARI DB</strong>
+                                                                <strong>Yth. <?php echo $penerimas->name; ?></strong>
                                                                 <br>
                                                                 <tab2> di </tab2>
                                                                 <br>
@@ -488,13 +503,61 @@
                                                                 Dengan Hormat,
                                                                 <br>
                                                                 <!-- <div mc:edit="std_content00"> -->
-                                                                	<p style="text-align:justify; text-indent: 0.5in;">Hasil simpulan data selama bulan ECHO DARI CARBON pada semua cabang didapatkan dari grafik yang dihasilkan. Terdapat tiga kategori simpulan data, yaitu stabil, tidak stabil, dan kosong. Ketentuan tiga kategori tersebut dihitung dari jumlah data yang ada pada bulan tersebut, total dari jumlah data ditetapkan berjumlah 30 data. Data yang stabil merupakan data yang memiliki jumlah lebih dari 70% dari jumlah data keseluruhan. Data yang tidak stabil merupakan data yang memiliki jumlah kurang dari atau sama dengan 70% dari jumlah data keseluruhan. Data kosong merupakan grafik dengan jumlah data sama dengan 0. Berikut merupakan hasil simpulan data:</p>
-                                                                  <tab11>Hari/tanggal</tab11><tab5>: Kamis, 07 Juni 2018 </tab5> <br>
-                                                                  <tab11>Waktu</tab11><tab5>: Pukul 09.00 WIB - selesai </tab5> <br>
-                                                                  <tab11>Tempat</tab11><tab5>: R.Ionosfer Pusat Sains Antariksa LAPAN Gd. II Lt. 1</tab5> <br>
-                                                                  <tab11>Agenda</tab11><tab5>: Diskusi Teknis Sistem Teleskop Robotik 50 cm </tab5> <br>
+                                                                	<p style="text-align:justify; text-indent: 0.5in;">Hasil simpulan data selama bulan <?php echo $laporan; ?> pada semua cabang didapatkan dari grafik yang dihasilkan. Terdapat tiga kategori simpulan data, yaitu stabil, tidak stabil, dan kosong. Ketentuan tiga kategori tersebut dihitung dari jumlah data yang ada pada bulan tersebut, total dari jumlah data ditetapkan berjumlah 30 data. Data yang stabil merupakan data yang memiliki jumlah lebih dari 70% dari jumlah data keseluruhan. Data yang tidak stabil merupakan data yang memiliki jumlah kurang dari atau sama dengan 70% dari jumlah data keseluruhan. Data kosong merupakan grafik dengan jumlah data sama dengan 0. Berikut merupakan hasil simpulan data:</p>
                                                                   <br>
-                                                                  <tab11>Atas perhatian dan kehadiran Bapak/Ibu kami ucapkan terima kasih.</tab11> <br>
+                                                                  <?php
+                                                                  $number = 1;
+                                                                 foreach($cabang as $cabangs) {
+                                                                      $p = App\File::where('id_cabang', $cabangs->id_cabang)->pluck('id_alat')->toArray();
+                                                                      $p = array_unique($p);
+                                                                      if(count($p) > 0) {
+                                                                      ?>
+                                                                      Cabang {{$cabangs->nama_cabang}}
+                                                                      <br>
+                                                                      <table style="border-collapse: collapse; width: 60%;">
+                                                                      <tr style="nth-child(even){background-color: #f2f2f2}">
+                                                                        <th style="text-align: center; padding: 2px;">No.</th>
+                                                                        <th style="text-align: center; padding: 2px;">Nama Alat</th>
+                                                                        <th style="text-align: center; padding: 2px;">Keterangan</th>
+                                                                      </tr>
+                                                                      <?php
+                                                                      $nomor = 1;
+                                                                      foreach($p as $pp) {
+                                                                        $test = App\Alat::where('id_alat', $pp)->value('nama_alat');
+                                                                        $jumlah_file = App\File::where([['id_cabang', $cabangs->id_cabang], ['id_alat', $pp],])->get();
+                                                                        // echo($test);
+                                                                        // echo(count($jumlah_file));
+                                                                      ?>
+                                                                        <tr style="nth-child(even){background-color: #f2f2f2}">
+                                                                          <td style="text-align: center; padding: 2px;"><?php echo $nomor; ?>.</td>
+                                                                          <td style="text-align: left; padding: 2px;"><?php echo $test; ?></td>
+                                                                          <?php
+                                                                          if(count($jumlah_file) >= 21) {
+                                                                            $jumlah_file = 'STABIL';
+                                                                          }
+                                                                          else if(count($jumlah_file) > 0) {
+                                                                            $jumlah_file = 'TIDAK STABIL';
+                                                                          }
+                                                                          else {
+                                                                            $jumlah_file = 'Diperlukan Pengecekan';
+                                                                          }
+                                                                          ?>
+                                                                          <td style="text-align: center; padding: 2px;"><?php echo $jumlah_file; ?></td>
+                                                                        </tr>
+                                                                  <?php
+                                                                    $nomor++;
+                                                                      }
+                                                                  ?>
+                                                                  </table>
+                                                                  <br>
+                                                                  <?php
+                                                                    $number++;
+                                                               }
+                                                             }
+                                                                 ?>
+
+                                                                  <br>
+                                                                  <tab11>Atas perhatian Bapak/Ibu kami ucapkan terima kasih.</tab11> <br>
                                                                 <!-- </div> -->
                                                          </td>
                                                     </tr>
@@ -535,15 +598,17 @@
                                                         </td>
                                                         <td valign="top" width="205" id="monkeyRewards">
                                                             <!-- <div mc:edit="monkeyrewards"> -->
-                                                                Kepala Pusat Sains Antariksa,
+                                                                Salam hangat,
                                                             <!-- </div> -->
                                                         <!-- </td>
                                                         <td valign="top" width="205" id="monkeyRewards"> -->
                                                             <!-- <div mc:edit="monkeyrewards"> -->
-                                                            <br><br><br><br><br><br>
-                                                                Dra. Clara Yono Yatini, M.Sc
+                                                            <br><br>
+                                                            <tab11> ttd </tab>
+                                                            <br><br><br>
+                                                                Tim Monitoring Data
                                                             <br>
-                                                                NIP. 19640309 199007 2001
+                                                                PUSSAINSA
                                                             <!-- </div> -->
                                                         </td>
                                                     </tr>
@@ -551,12 +616,12 @@
                                                         <!-- <td colspan="2" valign="middle" id="utility"> -->
                                                           <!-- <div mc:edit="std_utility"> -->
                                                           <br><br>
-                                                              <tab11>Deputi Bidang Sains Antariksa dan Atmosfer</tab11>
+                                                              <!-- <tab11>Deputi Bidang Sains Antariksa dan Atmosfer</tab11> -->
                                                           <br>
                                                         <!-- </td> -->
                                                     <!-- </tr>
                                                     <tr> -->
-                                                      <tab11>Tembusan :</tab11>
+                                                      <!-- <tab11>Tembusan :</tab11> -->
                                                         <br>
                                                     </tr>
                                                     </body> </html>

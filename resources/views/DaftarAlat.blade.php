@@ -1,4 +1,4 @@
-<?php session()->put('flag', 1); ?>
+<?php session()->put('flag', 7); ?>
 @extends('templates.admins.master')
 
 @section('content')
@@ -21,7 +21,7 @@
 
     <div class="x_panel">
       <div class="x_title">
-        <h2>Daftar Cabang</h2>
+        <h2>Daftar Alat</h2>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
@@ -32,8 +32,8 @@
               <th style="width: 1%" >Nomor</th>
               <th style="width: 1%"> Nama Alat</th>
               <th>Identitas Alat</th>
-              <th>Berada di Cabang</th>
-              <th style="width: 1%">Actions</th>
+              <th>Lokasi Pengamatan</th>
+              <th style="width: 5%">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -56,6 +56,9 @@
               <td>
               <?php
               $cucok = array_values($cucok);
+              if(count($cucok) == 0) {
+                echo('Saat ini belum tersedia di cabang manapun');
+              }
               for($i=0;$i<count($cucok);$i++) {
                 $nama_cabang = App\Cabang::where('id_cabang', $cucok[$i])->value('nama_cabang');
                 echo($nama_cabang);
@@ -74,7 +77,7 @@
               </td>
               <td>
                 <?php
-                  if($alats->id_alat != Auth::id()) {
+                  // if($alats->id_alat != Auth::id()) {
                 ?>
 
                 <form action="{{ route('HapusAlat', $alats->id_alat) }}" method="post" id="deleteButton">
@@ -105,7 +108,7 @@
                   </form>
 
                 <?php
-                  }
+                  // }
                 ?>
 
               </td>
