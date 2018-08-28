@@ -1,3 +1,4 @@
+<?php session()->put('flag', 3); ?>
 @extends('layouts.PenelitiPartial.master')
 
 @section('title')

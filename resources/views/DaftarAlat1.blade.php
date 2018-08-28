@@ -1,4 +1,4 @@
-<?php session()->put('flag', 0); ?>
+<?php session()->put('flag', 1); ?>
 @extends('layouts.kapusPartial.master')
 
 @section('title')
@@ -16,7 +16,7 @@
               <th style="width: 1%" >Nomor</th>
               <th style="width: 1%"> Nama Alat</th>
               <th>Identitas Alat</th>
-              <th>Berada di Cabang</th>
+              <th>Lokasi Pengamatan</th>
             </tr>
           </thead>
           <tbody>

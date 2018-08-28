@@ -1,4 +1,4 @@
-<?php session()->put('flag', 0); ?>
+<?php session()->put('flag', 1); ?>
 @extends('layouts.PenelitiPartial.master')
 
 @section('title')
@@ -15,8 +15,8 @@
             <tr>
               <th style="width: 1%" >Nomor</th>
               <th style="width: 1%"> Nama Alat</th>
-              <th>Identitas Alat</th>
-              <th>Berada di Cabang</th>
+              <!-- <th>Identitas Alat</th> -->
+              <th>Lokasi Pengamatan</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +26,7 @@
             <tr>
               <td>{{ $no }}</td>
               <td>{{ $alats->nama_alat }}</td>
-              <td>{{ $alats->identitas_alat }}</td>
+              <!-- <td>{{ $alats->identitas_alat }}</td> -->
               <?php
               $cocok   = App\File::where('id_alat', $alats->id_alat)->pluck('id_cabang');
               $cucok   = array();

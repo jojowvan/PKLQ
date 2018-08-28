@@ -5,7 +5,19 @@
     <?php $value = Session::get('flag'); ?>
     <?php
     if($value==0) {
-      $value = 'Homepage';
+      $value = 'Halaman Utama';
+    }
+    else if($value==1) {
+      $value = 'Daftar Alat';
+    }
+    else if($value==2) {
+      $value = 'Daftar Fail';
+    }
+    else if($value==3) {
+      $value = 'Monitor Lokasi';
+    }
+    else if($value==99) {
+      $value = 'Ubah Kata Sandi';
     }
     ?>
     <title><?php echo $value; ?></title>

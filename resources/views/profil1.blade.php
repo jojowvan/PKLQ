@@ -1,4 +1,4 @@
-
+<?php session()->put('flag', 99); ?>
 @extends('layouts.kapusPartial.master')
 
 @section('stylesheets')
@@ -9,7 +9,7 @@
 @section('title')
   <div class="x_panel">
     <div class="x_title">
-      <h2>Ganti Kata Sandi</h2>
+      <h2>Ubah Kata Sandi</h2>
       <div class="clearfix"></div>
     </div>
     <div class="x_content">

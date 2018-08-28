@@ -1,4 +1,4 @@
-
+<?php session()->put('flag', 2); ?>
 @extends('layouts.PenelitiPartial.master')
 
 @section('title')
@@ -14,9 +14,9 @@
           <thead>
             <tr>
               <th style="width: 1%" >Nomor</th>
-              <th style="width: 5%" > Lokasi Cabang </th>
+              <th style="width: 5%" > Lokasi Pengamatan </th>
               <th style="width: 5%"> Nama Alat </th>
-              <th style="width: 5%"> Nama File </th>
+              <th style="width: 5%"> Nama Fail </th>
             </tr>
           </thead>
           <tbody>

@@ -1,7 +1,6 @@
 @extends('layouts.kapusPartial.master')
 
 @section('title')
-Dashboard
 <!-- Main content -->
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -11,7 +10,7 @@ Dashboard
               <div class="inner">
                 <h3>{{DB::table('cabang')->count()}}</h3>
 
-                <p>Cabang</p>
+                <p>Lokasi Pengamatan</p>
               </div>
               <div class="icon">
                 <i class="ion fa-map-pin"></i>

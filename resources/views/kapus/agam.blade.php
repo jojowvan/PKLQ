@@ -1,14 +1,16 @@
+<?php session()->put('flag', 2); ?>
 @extends('layouts.kapusPartial.master')
 
 @section('title')
   <?php
     $tahun = Carbon\Carbon::now()->format('Y');
+    $id = Session::get('id');
     $nama_lokasi = App\Cabang::where('id_cabang', $id)->value('nama_cabang');
-    // dd((integer)$tahun);
+    // dd($nama_lokasi);
   ?>
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Grafik Monitoring Data</h3>
+      <h2 class="box-title">Grafik Monitoring Data Lokasi <?php echo $nama_lokasi; ?></h2>
     </div>
     <?php
       $file = Session::get('file');

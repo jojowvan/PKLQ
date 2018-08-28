@@ -7,6 +7,15 @@
     if($value==0) {
       $value = 'Halaman Utama';
     }
+    else if($value==1) {
+      $value = 'Daftar Alat';
+    }
+    else if($value==2) {
+      $value = 'Monitor Lokasi';
+    }
+    else if($value==99) {
+      $value = 'Ubah Kata Sandi';
+    }
     ?>
     <title> <?php echo $value; ?>  </title>
     <!-- Tell the browser to be responsive to screen width -->
