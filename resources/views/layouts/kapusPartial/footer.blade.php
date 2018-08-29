@@ -1,6 +1,6 @@
 <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Versi</b> 1.0.0
-        </div>
-        <strong>Copyright &copy; 2018 Sistem Monitoring Data Antariksa</strong>
-      </footer>
+  <div class="pull-right hidden-xs">
+    <b>Versi</b> 1.0.0
+  </div>
+  <strong>Copyright &copy; 2018 Sistem Monitoring Data Antariksa</strong>
+</footer>

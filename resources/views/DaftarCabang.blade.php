@@ -30,7 +30,7 @@
           <thead>
             <tr>
               <th style="width: 1%" >Nomor</th>
-              <th style="width: 1%"> Lokasi Pengamatan</th>
+              <th style="width: 30%"> Lokasi Pengamatan</th>
               <th>Internet Protocol Server</th>
               <th style="width: 1%">Aksi</th>
             </tr>

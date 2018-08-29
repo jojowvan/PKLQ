@@ -36,13 +36,13 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="/profile" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('profilPeneliti') }}" class="btn btn-default btn-flat">Ubah Kata Sandi</a>
                 </div>
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
+                      {{ __('Keluar') }}
                   </a>
 
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

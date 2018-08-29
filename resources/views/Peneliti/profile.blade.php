@@ -1,5 +1,5 @@
 <?php session()->put('flag', 99); ?>
-@extends('layouts.kapusPartial.master')
+@extends('layouts.PenelitiPartial.master')
 
 @section('stylesheets')
   <link href= "{{ asset('css/parsley.css') }}" rel="stylesheet">

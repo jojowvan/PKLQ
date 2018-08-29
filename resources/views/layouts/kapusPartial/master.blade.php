@@ -53,6 +53,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <?php
+              use App\Cabang;
+              $side = Cabang::orderBy('nama_cabang')->get();
+            ?>
             @foreach ($side as $id)
             <li><a href="{{route('kapuslihat.agam', $id->id_cabang) }}"> {{$id->nama_cabang}} </a></li>
             @endforeach

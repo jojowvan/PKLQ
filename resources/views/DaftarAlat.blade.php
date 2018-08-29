@@ -30,7 +30,7 @@
           <thead>
             <tr>
               <th style="width: 1%" >Nomor</th>
-              <th style="width: 1%"> Nama Alat</th>
+              <th style="width: 20%"> Nama Alat</th>
               <th>Identitas Alat</th>
               <th>Lokasi Pengamatan</th>
               <th style="width: 5%">Aksi</th>

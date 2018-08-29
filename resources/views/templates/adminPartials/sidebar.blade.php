@@ -15,8 +15,8 @@
       <li><a><i class="fa fa-television"></i> Monitor Lokasi <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <?php
-          use App\Cabang;
-          $side = Cabang::orderBy('nama_cabang')->get();
+            use App\Cabang;
+            $side = Cabang::orderBy('nama_cabang')->get();
           ?>
           @foreach ($side as $id)
           <li><a href="{{ route('lihat.agam', $id->id_cabang) }}">{{ $id->nama_cabang }}</a></li>
@@ -43,7 +43,6 @@
               </ul>
             </li>
 
-    <!-- <li><a href="{{ route('lihatFile') }}"><i class="fa fa-folder"></i>Daftar File</a> -->
     <li><a href="{{ route('laporan') }}"><i class="fa fa-file-text-o"></i>Laporan</a>
     </li>
   </div>

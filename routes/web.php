@@ -20,17 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('admin.dashboard');
-Route::get('/home/{id_cabang}', 'UserController@view_cabang')->name('kapuslihat.agam');
 
 // Route::get('/home/DaftarAlat', 'UserController@daftarAlat')->name('daftarAlat');
-
-Route::get('/profil', 'UserController@profil')->name('profil1');
-Route::post('/profil', 'UserController@gantiPassword')->name('ganti.password');
-
-Route::get('/lihatFile1', 'UserController@lihatFile1')->name('lihatFile1');
-
-Route::get('/daftarAlat1', 'UserController@daftarAlat1')->name('daftarAlat1');
-Route::get('/daftarAlat2', 'UserController@daftarAlat2')->name('daftarAlat2');
 //Route::get('/ea', function(){
   //run cmd
   //$process = new Process('python as.py');
@@ -39,37 +30,64 @@ Route::get('/daftarAlat2', 'UserController@daftarAlat2')->name('daftarAlat2');
 //});
 
 Route::prefix('admin')->group(function(){
-  Route::get('/tambahAnggota', 'AdminController@view')->name('tambahStaff.view');
-  Route::post('/tambahAnggota', 'AdminController@create')->name('tambahStaff.create');
+  //Keanggotaan
+  Route::get('/tambahAnggota', 'AdminController@tambahAnggota')->name('tambahStaff.view');
+  Route::get('/lihatAnggota', 'AdminController@daftarAnggota')->name('lihatStaff.readAll');
+  Route::post('/tambahAnggota', 'AdminController@createAnggota')->name('tambahStaff.create');
+  Route::delete('/lihatAnggota/{id}/delete', 'AdminController@hapusAnggota')->name('lihatStaff.destroy');
 
-  Route::get('/lihatAnggota', 'AdminController@readAll')->name('lihatStaff.readAll');
-  Route::delete('/lihatAnggota/{id}/delete', 'AdminController@destroy')->name('lihatStaff.destroy');
-
+  //Ganti Password
   Route::get('/profil', 'AdminController@profilAdmin')->name('profilAdmin');
-  Route::post('/profil', 'UserController@gantiPassword')->name('ganti.password');
+  Route::post('/profil', 'AdminController@gantiPassword')->name('ganti.password');
 
-  Route::get('/lihatCabang/{id_cabang}', 'AdminController@viewCabang')->name('lihat.agam');
+  //Monitor Lokasi
+  Route::get('/lihatCabang/{id_cabang}', 'AdminController@lihatChart')->name('lihat.agam');
 
-  Route::get('/tambahCabang', 'AdminController@tambahCabang')->name('tambahCabang');
+  //Lokasi Pengamatan
   Route::post('/tambahCabang', 'AdminController@createCabang')->name('tambahCabang.create');
+  Route::get('/tambahCabang', 'AdminController@tambahCabang')->name('tambahCabang');
+  Route::get('/DaftarCabang', 'AdminController@daftarCabang')->name('DaftarCabang');
+  Route::delete('/DaftarCabang/{id}/delete', 'AdminController@hapusCabang')->name('HapusCabang');
 
-  Route::get('/lihatFile', 'AdminController@lihatFile')->name('lihatFile');
-
-  Route::get('/DaftarCabang', 'AdminController@DaftarCabang')->name('DaftarCabang');
-  Route::delete('/DaftarCabang/{id}/delete', 'AdminController@HapusCabang')->name('HapusCabang');
-
-  Route::get('/DaftarAlat', 'AdminController@DaftarAlat')->name('DaftarAlat');
-  Route::delete('/DaftarAlat/{id}/delete', 'AdminController@HapusAlat')->name('HapusAlat');
-
+  //Daftar Alat
+  Route::get('/DaftarAlat', 'AdminController@daftarAlat')->name('DaftarAlat');
+  Route::delete('/DaftarAlat/{id}/delete', 'AdminController@hapusAlat')->name('HapusAlat');
   Route::get('/tambahAlat', 'AdminController@tambahAlat')->name('tambahAlat');
   Route::post('/tambahAlat', 'AdminController@createAlat')->name('tambahAlat.create');
 
+  //Laporan
   Route::get('/Laporan', 'AdminController@Laporan')->name('laporan');
-
   Route::get('/lihatLaporan/{id}', 'AdminController@lihatLaporan')->name('lihatLaporan');
+
+  // Route::get('/lihatFile', 'AdminController@lihatFile')->name('lihatFile');
 });
 
+Route::prefix('peneliti')->group(function(){
+  //Monitor Lokasi
+  Route::get('/home/{id_cabang}', 'PenelitiController@lihatChartPeneliti')->name('kapuslihat.agam');
 
+  //Daftar Alat
+  Route::get('/daftarAlatPeneliti', 'PenelitiController@daftarAlatPeneliti')->name('daftarAlat2');
+
+  //Daftar Fail
+  Route::get('/lihatFailPeneliti', 'PenelitiController@lihatFilePeneliti')->name('lihatFile1');
+
+  //Profil
+  Route::get('/profilPeneliti', 'PenelitiController@profilPeneliti')->name('profilPeneliti');
+  Route::post('/profilPeneliti', 'PenelitiController@gantiPassword')->name('ganti.password');
+});
+
+Route::prefix('kabid')->group(function(){
+  //Monitor Lokasi
+  Route::get('/home/{id_cabang}', 'KapusController@lihatChartKabid')->name('kapuslihat.agam');
+
+  //Profil
+  Route::get('/profilKabid', 'KapusController@profilKabid')->name('profil1');
+  Route::post('/profilKabid', 'KapusController@gantiPassword')->name('ganti.password');
+
+  //Daftar Alat
+  Route::get('/daftarAlatKabid', 'KapusController@daftarAlatKabid')->name('daftarAlat1');
+});
 
 // Route::get('/wow', function(){
 //   $process = new Process('python ../routes/cabang.py');

@@ -1,7 +1,7 @@
 <?php session()->put('flag', 2); ?>
 @extends('layouts.kapusPartial.master')
 
-@section('title')
+@section('content')
   <?php
     $tahun = Carbon\Carbon::now()->format('Y');
     $id = Session::get('id');

@@ -22,20 +22,22 @@ use Mail;
 session()->regenerate();
 error_reporting(0);
 
-class AdminController extends UserController
+class AdminController extends PenelitiController
 {
-    public function index()
+    public function tambahAnggota()
     {
-     return view('admin');
+      // $side   = sidebar::orderBy('nama_cabang')->get();
+      return view('/tambahStaff');
     }
 
-    public function view()
+    public function daftarAnggota()
     {
-      $side   = sidebar::orderBy('id_cabang')->get();
-      return view('/tambahStaff', compact('side'));
+        $readUser = User::orderBy('id')->get();
+        // $side   = sidebar::orderBy('id_cabang')->get();
+        return view('/lihatStaff', compact('readUser'));
     }
 
-    public function create(Request $request)
+    public function createAnggota(Request $request)
     {
       $pswd = Session::get('password');
       $this->validate($request, array(
@@ -44,7 +46,6 @@ class AdminController extends UserController
               'identitas'     => 'required',
               'jabatan'        => 'required',
           ));
-
       $user   = User::create([
               'name'           => $request->input('name'),
               'email'          => $request->input('email'),
@@ -52,7 +53,6 @@ class AdminController extends UserController
               'identitas'      => $request->input('identitas'),
               'isAdmin'        => $request->input('jabatan'),
           ]);
-
       $info = Userinfo::latest()->first($info);
       session()->put('nama', $request->input('name'));
       session()->put('password', $pswd);
@@ -62,7 +62,15 @@ class AdminController extends UserController
       return redirect()->back();
     }
 
-    public function viewCabang($id)
+    public function hapusAnggota($id)
+    {
+        $user   = User::find($id);
+        $user->delete();
+        session()->flash('deleteNotif', 'Anggota Berhasil Dihapus!');
+        return redirect()->route('lihatStaff.readAll');
+    }
+
+    public function lihatChart($id)
     {
         $side = sidebar::orderBy('id_cabang')->get();
         $file = File::orderBy('id_file')->get();
@@ -76,6 +84,20 @@ class AdminController extends UserController
     public function tambahCabang()
     {
       return view('tambahCabang');
+    }
+
+    public function daftarCabang()
+    {
+      $cabang = Cabang::orderBy('id_cabang')->get();
+      return view('DaftarCabang', compact('cabang'));
+    }
+
+    public function hapusCabang($id)
+    {
+        $cabang   = Cabang::where('id_cabang', $id);
+        $cabang->delete();
+        session()->flash('deleteNotif', 'Lokasi Pengamatan Berhasil Dihapus!');
+        return redirect()->route('DaftarCabang');
     }
 
     public function createCabang(Request $request)
@@ -107,57 +129,20 @@ class AdminController extends UserController
       return redirect()->back();
     }
 
-    public function readAll()
-    {
-        $readUser = User::orderBy('id')->get();
-        $side   = sidebar::orderBy('id_cabang')->get();
-        return view('/lihatStaff', compact('readUser'), compact('side'));
-    }
-
-    public function destroy($id)
-    {
-        $user   = User::find($id);
-        $user->delete();
-        session()->flash('deleteNotif', 'Anggota Berhasil Dihapus!');
-        return redirect()->route('lihatStaff.readAll');
-    }
-
     public function profilAdmin()
     {
       $side   = sidebar::orderBy('id_cabang')->get();
       return view('profil', compact('side'));
     }
 
-    public function lihatFile()
-    {
-      $file = File::orderBy('id_file')->get();
-      $cabang = Cabang::orderBy('id_cabang')->get();
-      $alat = Alat::orderBy('id_alat')->get();
-      return view('lihatFile', compact('file'), compact('cabang'), compact('alat'));
-    }
-
-    public function DaftarCabang()
-    {
-      $cabang = Cabang::orderBy('id_cabang')->get();
-      return view('DaftarCabang', compact('cabang'));
-    }
-
-    public function HapusCabang($id)
-    {
-        $cabang   = Cabang::where('id_cabang', $id);
-        $cabang->delete();
-        session()->flash('deleteNotif', 'Cabang Berhasil Dihapus!');
-        return redirect()->route('DaftarCabang');
-    }
-
-    public function DaftarAlat()
+    public function daftarAlat()
     {
       $alat = Alat::orderBy('id_alat')->get();
       $cabang = Cabang::orderBy('id_cabang')->get();
       return view('DaftarAlat', compact('alat'), compact('cabang'));
     }
 
-    public function HapusAlat($id)
+    public function hapusAlat($id)
     {
         $alat   = Alat::where('id_alat', $id);
         $alat->delete();
@@ -333,4 +318,12 @@ class AdminController extends UserController
       }
     // echo 'Email was sent!';
     }
+
+    // public function lihatFile()
+    // {
+    //   $file = File::orderBy('id_file')->get();
+    //   $cabang = Cabang::orderBy('id_cabang')->get();
+    //   $alat = Alat::orderBy('id_alat')->get();
+    //   return view('lihatFile', compact('file'), compact('cabang'), compact('alat'));
+    // }
 }

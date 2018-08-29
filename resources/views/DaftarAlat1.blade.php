@@ -1,32 +1,32 @@
 <?php session()->put('flag', 1); ?>
 @extends('layouts.kapusPartial.master')
 
-@section('title')
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Daftar Alat</h2>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-
-        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-          <thead>
-            <tr>
-              <th style="width: 1%" >Nomor</th>
-              <th style="width: 1%"> Nama Alat</th>
-              <th>Identitas Alat</th>
-              <th>Lokasi Pengamatan</th>
-            </tr>
-          </thead>
-          <tbody>
+@section('content')
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Daftar Alat</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width: 20%; text-align:center;" >Nomor</th>
+                <th style="width: 20%; text-align:center;"> Nama Alat</th>
+                <!-- <th>Identitas Alat</th> -->
+                <th style="text-align:center;">Lokasi Pengamatan</th>
+              </tr>
+            </thead>
+            <tbody>
               <?php $no = 0;?>
                 @foreach($alat as $alats)
               <?php $no++ ;?>
             <tr>
-              <td>{{ $no }}</td>
-              <td>{{ $alats->nama_alat }}</td>
-              <td>{{ $alats->identitas_alat }}</td>
+              <td style="text-align:center;">{{ $no }}</td>
+              <td style="text-align:center;">{{ $alats->nama_alat }}</td>
+              <!-- <td>{{ $alats->identitas_alat }}</td> -->
               <?php
               $cocok   = App\File::where('id_alat', $alats->id_alat)->pluck('id_cabang');
               $cucok   = array();
@@ -36,7 +36,7 @@
               $cucok = array_unique($cucok);
               // dd($cucok);
               ?>
-              <td>
+              <td style="text-align:center;">
               <?php
               $cucok = array_values($cucok);
               if(count($cucok) == 0) {
@@ -61,8 +61,10 @@
             </tr>
 
             @endforeach
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
       </div>
     </div>
   </div>
