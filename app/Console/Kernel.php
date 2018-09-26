@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        '\App\Console\Commands\Test',
+        '\App\Console\Commands\updateData',
+        '\App\Console\Commands\sendLaporan',
     ];
 
     /**
@@ -24,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('Test:Test')->everyMinute();
-        $schedule->command('Test:test')->everyMinute();
+      $schedule->command('update:data')->->weeklyOn(1, '8:00');
+      $schedule->command('send:laporan')->monthlyOn(4, '10:00');
     }
 
     /**

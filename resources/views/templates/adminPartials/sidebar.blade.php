@@ -39,11 +39,12 @@
             <li><a><i class="fa fa-wrench"></i> Daftar Alat <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="{{ route('DaftarAlat') }}">Daftar Alat</a></li>
-                <li><a href="{{ route('tambahAlat') }}">Tambah Alat</a></li>
+                <li><a href="{{ route('updateData') }}">Tambah Alat</a></li>
               </ul>
             </li>
 
     <li><a href="{{ route('laporan') }}"><i class="fa fa-file-text-o"></i>Laporan</a>
+    <li><a href="{{ route('updateData') }}"><i class="fa fa-refresh"></i>Update Data</a>
     </li>
   </div>
 </div>

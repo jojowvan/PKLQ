@@ -17,7 +17,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset('..\public\assets\img\profil.png')}}" class="user-image" alt="User Image">
+        <img src="{{ asset('..\public\admintemplate\dist\img\p3.png') }}" class="user-image" alt="User Image">
       </div>
       <div class="pull-left info">
         <p><span>Selamat datang,</span></p>
@@ -58,7 +58,7 @@
             $side = Cabang::orderBy('nama_cabang')->get();
           ?>
           @foreach ($side as $id)
-          <li><a href="{{route('kapuslihat.agam', $id->id_cabang) }}"> {{$id->nama_cabang}} </a></li>
+          <li><a href="{{route('penelitilihat.agam', $id->id_cabang) }}"> {{$id->nama_cabang}} </a></li>
           @endforeach
         </ul>
       </li>

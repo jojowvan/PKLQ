@@ -21,7 +21,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('..\public\assets\img\profil.png')}}" class="user-image" alt="User Image">
+              <img src="{{ asset('..\public\admintemplate\dist\img\p3.png') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
